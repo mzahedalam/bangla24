@@ -1,0 +1,209 @@
+<?php
+/**
+ * Custom styles for Jetpack features
+ *
+ * @package Modern_News_Portal
+ */
+
+/* Infinite Scroll */
+.infinite-scroll .pagination {
+    display: none;
+}
+
+.infinite-scroll.neverending .site-footer {
+    display: none;
+}
+
+.infinity-end.neverending .site-footer {
+    display: block;
+}
+
+#infinite-handle {
+    text-align: center;
+    margin: 30px 0;
+}
+
+#infinite-handle span {
+    background-color: var(--primary-color, #1e73be);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+#infinite-handle span:hover {
+    background-color: var(--secondary-color, #333);
+}
+
+.infinite-loader {
+    margin: 30px auto;
+    width: 28px;
+}
+
+/* Related Posts */
+.jp-relatedposts {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.jp-relatedposts-headline {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.jp-relatedposts-headline:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color, #1e73be);
+}
+
+.jp-relatedposts-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.jp-relatedposts-post {
+    margin-bottom: 0;
+}
+
+.jp-relatedposts-post-img {
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.jp-relatedposts-post-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.jp-relatedposts-post-title a {
+    color: var(--secondary-color, #333);
+    text-decoration: none;
+}
+
+.jp-relatedposts-post-title a:hover {
+    color: var(--primary-color, #1e73be);
+}
+
+.jp-relatedposts-post-date,
+.jp-relatedposts-post-context {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .jp-relatedposts-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .jp-relatedposts-items {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Subscription Widget */
+.jetpack_subscription_widget {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.jetpack_subscription_widget .widget-title {
+    margin-top: 0;
+}
+
+.jetpack_subscription_widget #subscribe-text p {
+    margin-bottom: 15px;
+}
+
+.jetpack_subscription_widget #subscribe-email input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.jetpack_subscription_widget #subscribe-submit input[type="submit"] {
+    width: 100%;
+    background-color: var(--primary-color, #1e73be);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.jetpack_subscription_widget #subscribe-submit input[type="submit"]:hover {
+    background-color: var(--secondary-color, #333);
+}
+
+/* Sharing Buttons */
+div.sharedaddy {
+    margin-top: 30px;
+}
+
+div.sharedaddy h3.sd-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+div.sharedaddy .sd-content ul {
+    margin: 0 !important;
+}
+
+div.sharedaddy .sd-content ul li {
+    margin: 0 5px 5px 0 !important;
+}
+
+div.sharedaddy .sd-content ul li a.sd-button {
+    border-radius: 3px !important;
+}
+
+/* Dark Mode Compatibility */
+.dark-mode div.sharedaddy h3.sd-title {
+    color: #f0f0f0;
+}
+
+.dark-mode .jetpack_subscription_widget {
+    background-color: #333;
+}
+
+.dark-mode .jetpack_subscription_widget #subscribe-email input {
+    background-color: #444;
+    border-color: #555;
+    color: #f0f0f0;
+}
+
+.dark-mode .jp-relatedposts {
+    border-color: #444;
+}
+
+.dark-mode .jp-relatedposts-post-title a {
+    color: #f0f0f0;
+}
+
+.dark-mode .jp-relatedposts-post-date,
+.dark-mode .jp-relatedposts-post-context {
+    color: #ccc;
+}
