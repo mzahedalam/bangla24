@@ -2,8 +2,7 @@ name: Deploy Theme
 on:
   push:
     branches:
-      - main  # or master, depending on your 
-default branch
+      - main
 
 jobs:
   deploy:
@@ -25,15 +24,9 @@ jobs:
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@main
         env:
-          SSH_PRIVATE_KEY: ${{ 
-secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST 
-}}
-          REMOTE_USER: ${{ secrets.REMOTE_USER 
-}}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
           SOURCE: "./"
-          TARGET: 
-"~/../../var/www/bangla24/wp-content/themes/bangla24v1/"
-          EXCLUDE: "/.git/, /.github/, 
-/node_modules/, /tests/, .gitignore, README.md, 
-package.json, package-lock.json"
+          TARGET: "~/../../var/www/bangla24/wp-content/themes/bangla24v1/"
+          EXCLUDE: "/.git/, /.github/, /node_modules/, /tests/, .gitignore, README.md, package.json, package-lock.json"
