@@ -33,7 +33,7 @@ jobs:
           host: innof.com
           username: sumon
           private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          scp_source: ./deploy-temp/
+          scp_source: ./deploy-temp/*
           scp_target: /var/www/bangla24/wp-content/themes/bangla24v2/
           before_script: |
             rm -rf /var/www/bangla24/wp-content/themes/bangla24v2/*
