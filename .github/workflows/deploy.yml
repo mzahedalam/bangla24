@@ -28,5 +28,5 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           SOURCE: "./"
-          TARGET: "~/../../var/www/bangla24/wp-content/themes/bangla24v1/"
+          TARGET: "~/../../var/www/bangla24/wp-content/themes/bangla24v2/"
           EXCLUDE: "/.git/, /.github/, /node_modules/, /tests/, .gitignore, README.md, package.json, package-lock.json"
