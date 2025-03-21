@@ -4,7 +4,7 @@ A modern, responsive WordPress theme for news portals inspired by Prothom Alo, B
 
 ## Features
 
-- **Modern Design**: Clean, professional layout with ample whitespace and clear typography
+- **Modern Design**: Clean, professional layout with ample whitespace and clear typography two
 - **Responsive Layout**: Fully responsive design that works perfectly on all devices
 - **Breaking News Ticker**: Highlight time-sensitive updates with an animated ticker
 - **Featured Posts Section**: Showcase important articles in a prominent featured area
