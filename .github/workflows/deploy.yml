@@ -23,10 +23,9 @@ jobs:
 
       - name: Prepare deployment files
         run: |
+          rm -rf deploy-temp
           mkdir deploy-temp
-          cp -r * deploy-temp/
-          rm -rf deploy-temp/node_modules deploy-temp/tests deploy-temp/.git deploy-temp/.github
-          rm -f deploy-temp/.gitignore deploy-temp/README.md deploy-temp/package.json deploy-temp/package-lock.json deploy-temp/tailwind.config.js deploy-temp/postcss.config.js
+          rsync -av --progress ./ ./deploy-temp/ --exclude deploy-temp --exclude node_modules --exclude tests --exclude .git --exclude .github --exclude .gitignore --exclude README.md --exclude package.json --exclude package-lock.json --exclude tailwind.config.js --exclude postcss.config.js
 
       - name: Deploy to Server
         uses: kostya-ten/ssh-server-deploy@v4
