@@ -24,8 +24,8 @@ jobs:
       - name: Deploy to Server
         uses: kostya-ten/ssh-server-deploy@v4
         with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
+          host: innof.com
+          username: sumon
           private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           scp_source: ./
           scp_target: /var/www/bangla24/wp-content/themes/bangla24v2/
