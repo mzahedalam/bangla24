@@ -1,39 +1,34 @@
 name: Deploy Theme BD24
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4  # Updated to latest version
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          
+          node-version: '20'
+          cache: 'npm'  # Cache node_modules for faster installs
+
       - name: Install dependencies
-        run: npm install
-        
+        run: npm ci --prefer-offline  # Clean install using cached modules
+
       - name: Build assets
         run: npm run build
 
-      - name: Prepare deployment files
-        run: |
-          rm -rf deploy-temp
-          mkdir deploy-temp
-          rsync -av --progress ./ ./deploy-temp/ --exclude deploy-temp --exclude node_modules --exclude tests --exclude .git --exclude .github --exclude .gitignore --exclude README.md --exclude package.json --exclude package-lock.json --exclude tailwind.config.js --exclude postcss.config.js
-
-      - name: Deploy to Server
-        uses: kostya-ten/ssh-server-deploy@v4
+      - name: Deploy via Rsync
+        uses: appleboy/ssh-action@v1.8.0
         with:
           host: innof.com
           username: sumon
-          private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          scp_source: ./deploy-temp/*
-          scp_target: /var/www/bangla24/wp-content/themes/bangla24v2/
-          before_script: |
-            rm -rf /var/www/bangla24/wp-content/themes/bangla24v2/*
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/bangla24/wp-content/themes/bangla24v2/
+            rsync -avz --delete --exclude={'node_modules','.git','.github','tests'} \
+            -e "ssh -p 22 -o StrictHostKeyChecking=no" \
+            $GITHUB_WORKSPACE/ sumon@innof.com:/var/www/bangla24/wp-content/themes/bangla24v2/
