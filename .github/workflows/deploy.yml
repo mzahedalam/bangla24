@@ -33,7 +33,7 @@ secrets.SSH_PRIVATE_KEY }}
 }}
           SOURCE: "./"
           TARGET: 
-"/path/to/your/wordpress/wp-content/themes/modern-news-portal-theme"
+"~/../../var/www/bangla24/wp-content/themes/bangla24v1/"
           EXCLUDE: "/.git/, /.github/, 
 /node_modules/, /tests/, .gitignore, README.md, 
 package.json, package-lock.json"
