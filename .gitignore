@@ -2,3 +2,7 @@ node_modules/
 .DS_Store
 .env
 style.css.map
+package.config.json
+package-lock.json
+postcss.config.js
+tailwind.config.js
