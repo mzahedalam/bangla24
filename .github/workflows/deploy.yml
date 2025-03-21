@@ -7,16 +7,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4  # Updated to latest version
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'  # Cache node_modules for faster installs
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci --prefer-offline  # Clean install using cached modules
+        run: npm ci --prefer-offline
 
       - name: Build assets
         run: npm run build
@@ -28,7 +28,15 @@ jobs:
           username: sumon
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /var/www/bangla24/wp-content/themes/bangla24v2/
-            rsync -avz --delete --exclude={'node_modules','.git','.github','tests'} \
-            -e "ssh -p 22 -o StrictHostKeyChecking=no" \
-            $GITHUB_WORKSPACE/ sumon@innof.com:/var/www/bangla24/wp-content/themes/bangla24v2/
+            rsync -avz --delete \
+            --exclude=node_modules \
+            --exclude=.git \
+            --exclude=.github \
+            --exclude=tests \
+            --exclude=.gitignore \
+            --exclude=README.md \
+            --exclude=package.json \
+            --exclude=package-lock.json \
+            --exclude=tailwind.config.js \
+            --exclude=postcss.config.js \
+            ${{ github.workspace }}/ /var/www/bangla24/wp-content/themes/bangla24v2/
