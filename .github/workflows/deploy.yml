@@ -21,18 +21,24 @@ jobs:
       - name: Build assets
         run: npm run build
         
-      - name: Deploy to server
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          ARGS: "-rlgoDzvc -i --delete"
-          SOURCE: "./"
-          TARGET: "~/../../var/www/bangla24/wp-content/themes/bangla24v2/"
-          EXCLUDE: "/.git/, /.github/, /node_modules/, /tests/, .gitignore, README.md, package.json, package-lock.json"
-          SCRIPT_BEFORE: |
-            whoami
-            pwd
-          SCRIPT_AFTER: |
-            echo "Deployment complete"
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.REMOTE_HOST }}
+          
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+        
+      - name: Deploy with rsync
+        run: |
+          rsync -avz --delete \
+            --exclude=/.git/ \
+            --exclude=/.github/ \
+            --exclude=/node_modules/ \
+            --exclude=/tests/ \
+            --exclude=.gitignore \
+            --exclude=README.md \
+            --exclude=package.json \
+            --exclude=package-lock.json \
+            ./ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/var/www/bangla24/wp-content/themes/bangla24v2/
