@@ -21,22 +21,15 @@ jobs:
       - name: Build assets
         run: npm run build
 
-      - name: Deploy via Rsync
-        uses: appleboy/ssh-action@v1.8.0
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@d5ac7ef3e8e4c6d0350e53e5d8d7be3a0eebd1c7  # Latest verified commit
         with:
           host: innof.com
           username: sumon
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            rsync -avz --delete \
-            --exclude=node_modules \
-            --exclude=.git \
-            --exclude=.github \
-            --exclude=tests \
-            --exclude=.gitignore \
-            --exclude=README.md \
-            --exclude=package.json \
-            --exclude=package-lock.json \
-            --exclude=tailwind.config.js \
-            --exclude=postcss.config.js \
-            ${{ github.workspace }}/ /var/www/bangla24/wp-content/themes/bangla24v2/
+            cd /var/www/bangla24/wp-content/themes/bangla24v2/
+            git -C $GITHUB_WORKSPACE ls-files --modified --others --exclude-standard | \
+            rsync -avz --delete --files-from=- \
+            -e "ssh -p 22 -o StrictHostKeyChecking=no" \
+            $GITHUB_WORKSPACE/ sumon@innof.com:/var/www/bangla24/wp-content/themes/bangla24v2/
