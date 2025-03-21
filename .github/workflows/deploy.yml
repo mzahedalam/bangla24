@@ -21,13 +21,20 @@ jobs:
       - name: Build assets
         run: npm run build
 
+      - name: Create deployment directory
+        run: |
+          mkdir -p deploy
+          cp -r * deploy/
+          rm -rf deploy/node_modules deploy/tests deploy/.git deploy/.github
+          rm -f deploy/.gitignore deploy/README.md deploy/package.json deploy/package-lock.json deploy/tailwind.config.js deploy/postcss.config.js
+
       - name: Deploy to Server
         uses: kostya-ten/ssh-server-deploy@v4
         with:
           host: innof.com
           username: sumon
           private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          scp_source: ./
+          scp_source: ./deploy/
           scp_target: /var/www/bangla24/wp-content/themes/bangla24v2/
           before_script: |
             rm -rf /var/www/bangla24/wp-content/themes/bangla24v2/*
