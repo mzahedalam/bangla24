@@ -21,12 +21,17 @@ jobs:
       - name: Build assets
         run: npm run build
         
-      - name: Deploy with rsync
-        uses: burnett01/rsync-deployments@5.2.1
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v1.0.0
         with:
-          switches: -avzr --delete --exclude=/.git/ --exclude=/.github/ --exclude=/node_modules/ --exclude=/tests/ --exclude=.gitignore --exclude=README.md --exclude=package.json --exclude=package-lock.json
-          path: ./
-          remote_path: /var/www/bangla24/wp-content/themes/bangla24v2/
-          remote_host: ${{ secrets.REMOTE_HOST }}
-          remote_user: ${{ secrets.REMOTE_USER }}
-          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/bangla24/wp-content/themes/
+            rm -rf bangla24v2
+            mkdir -p bangla24v2
+            cd bangla24v2
+            git clone https://github.com/${{ github.repository }}.git .
+            rm -rf .git .github node_modules tests
+            rm .gitignore README.md package.json package-lock.json
