@@ -20,27 +20,17 @@ jobs:
         
       - name: Build assets
         run: npm run build
-        
-      - name: Install SSH key
-        uses: webfactory/ssh-agent@v0.8.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          
-      - name: Add known hosts
-        run: ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
-        
+
       - name: Deploy to Server
-        uses: appleboy/ssh-action@v1.0.0
+        uses: kostya-ten/ssh-server-deploy@v4
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          script: |
-            cd /var/www/bangla24/wp-content/themes/
-            rm -rf bangla24v2
-            mkdir -p bangla24v2
-            cd bangla24v2
-            git clone https://github.com/${{ github.repository }}.git .
-            rm -rf .git .github node_modules tests
-            rm .gitignore README.md package.json package-lock.json
+          private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          scp_source: ./
+          scp_target: /var/www/bangla24/wp-content/themes/bangla24v2/
+          before_script: |
+            rm -rf /var/www/bangla24/wp-content/themes/bangla24v2/*
+          after_script: |
+            cd /var/www/bangla24/wp-content/themes/bangla24v2/
+            rm -rf .git .github node_modules tests .gitignore README.md package.json package-lock.json
