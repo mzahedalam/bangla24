@@ -33,4 +33,6 @@ jobs:
             rm -rf /var/www/bangla24/wp-content/themes/bangla24v2/*
           after_script: |
             cd /var/www/bangla24/wp-content/themes/bangla24v2/
-            rm -rf .git .github node_modules tests .gitignore README.md package.json package-lock.json
+            rm -rf .git .github
+          ssh_options: -o StrictHostKeyChecking=no
+          scp_options: -r -P 22 --exclude=node_modules --exclude=tests --exclude=.gitignore --exclude=README.md --exclude=package.json --exclude=package-lock.json --exclude=tailwind.config.js --exclude=postcss.config.js --exclude=.git --exclude=.github
