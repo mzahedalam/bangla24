@@ -28,7 +28,7 @@
 						<div class="date-time">
 							<i class="far fa-calendar-alt"></i> <?php echo esc_html( date_i18n( get_option( 'date_format' ) ) ); ?>
 						</div>
-						<div class="social-links">
+						<div class="social-links flex items-center">
 							<?php
 							if ( has_nav_menu( 'social-menu' ) ) {
 								wp_nav_menu( array(
@@ -42,6 +42,12 @@
 							?>
 						</div>
 					</div>
+					<div class="search-form">
+                        <form role="search" method="get" class="search-form-container" action="<?php echo esc_url(home_url('/')); ?>">
+                            <input type="search" class="search-field" placeholder="<?php echo esc_attr_x('Search...', 'placeholder', 'modern-news-portal'); ?>" value="<?php echo get_search_query(); ?>" name="s">
+                            <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
 					<div class="header-top-right p-0 m-0">
 						<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
 							<nav class="top-navigation">
@@ -54,9 +60,6 @@
 								?>
 							</nav>
 						<?php endif; ?>
-						<div class="search-form">
-							<?php get_search_form(); ?>
-						</div>
 					</div>
 				</div>
 			</div>

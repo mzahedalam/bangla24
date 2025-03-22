@@ -58,17 +58,116 @@ img {
     z-index: 100;
 }
 
+/* Update header-top styles */
 .header-top {
+    background-color: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.header-top .container > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    gap: 20px;
 }
 
 .header-top-left {
     display: flex;
     align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
+.header-top-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Update search form styles */
+.search-form {
+    position: relative;
+    width: 300px;
+}
+
+.search-form-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-field {
+    width: 100%;
+    padding: 8px 40px 8px 15px;
+    border: 1px solid var(--yellow);
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.search-submit {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--yellow);
+    cursor: pointer;
+    padding: 5px;
+}
+
+.search-submit:hover {
+    color: var(--red);
+}
+
+/* Update top menu styles */
+.top-navigation {
+    display: flex;
+    align-items: center;
+}
+
+.top-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 15px;
+}
+
+.top-menu li {
+    margin: 0;
+}
+
+.top-menu a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.top-menu a:hover {
+    color: var(--yellow);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-top .container > div {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .header-top-left,
+    .header-top-right {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .search-form {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .top-menu {
+        justify-content: center;
+    }
 }
 
 .date-time {
@@ -78,7 +177,7 @@ img {
 }
 
 .social-links a {
-    display: inline-block;
+    display: inline;
     margin-right: 10px;
     color: #666;
 }
@@ -98,7 +197,7 @@ img {
 
 .search-form input {
     padding: 8px 15px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--yellow);
     border-radius: 3px;
     font-size: 14px;
     width: 200px;
@@ -111,7 +210,7 @@ img {
     transform: translateY(-50%);
     background: none;
     border: none;
-    color: #b81a1a;
+    color: var(__red);
     cursor: pointer;
 }
 
