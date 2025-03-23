@@ -40,7 +40,3 @@ jobs:
             sudo chown -R www-data:www-data .
             sudo chmod -R 755 .
             sudo find . -type f -exec chmod 644 {} \;
-            git -C $GITHUB_WORKSPACE ls-files --modified --others --exclude-standard | \
-            rsync -avz --delete --files-from=- \
-            -e "ssh -p 22 -o StrictHostKeyChecking=no" \
-            $GITHUB_WORKSPACE/ sumon@innof.com:/var/www/bangla24/wp-content/themes/bangla24v2/
