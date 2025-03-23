@@ -23,20 +23,26 @@ jobs:
       - name: Build assets
         run: npm run build
 
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.0
+      - name: Prepare Deployment Files
+        run: |
+          # Remove files that shouldn't be deployed
+          rm -rf node_modules .git .github tests
+          rm -f .gitignore README.md package*.json *.config.js
+
+      - name: Deploy via Rsync
+        uses: burnett01/rsync-deployments@5.3.1
         with:
-          host: innof.com
-          username: sumon
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd /var/www/bangla24/wp-content/themes/bangla24v2/
-            if [ ! -d .git ]; then
-              git clone https://github.com/mzahedalam/bangla24.git .
-            else
-              git fetch --all
-              git reset --hard origin/main
-            fi
-            sudo chown -R www-data:www-data .
-            sudo chmod -R 755 .
-            sudo find . -type f -exec chmod 644 {} \;
+          switches: -avz --delete
+          path: ./
+          remote_path: /var/www/bangla24/wp-content/themes/bangla24v2/
+          remote_host: innof.com
+          remote_user: sumon
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          exclude: |
+            node_modules/
+            .git/
+            .github/
+            tests/
+            *.md
+            package*.json
+            *.config.js
