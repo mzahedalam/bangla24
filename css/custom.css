@@ -61,7 +61,7 @@ img {
 /* Update header-top styles */
 .header-top {
     background-color: #fff;
-    padding: 10px 0;
+    padding: 5px 0;  /* Changed from 10px to 5px */
     border-bottom: 1px solid #eee;
 }
 
@@ -69,7 +69,13 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 10px;  /* Reduced from 20px to 10px for better spacing */
+}
+
+/* Adjust vertical spacing for child elements */
+.header-top-left, .header-top-right {
+    margin: 0;
+    padding: 0;
 }
 
 .header-top-left {
