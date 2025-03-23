@@ -46,9 +46,9 @@ jobs:
           ./ sumon@innof.com:/var/www/bangla24/wp-content/themes/bangla24v2/
 
       - name: Set Permissions
-        env:
-          SUDO_PASSWORD: ${{ secrets.SUDO_PASSWORD }}
         run: |
-          sshpass -p "$SUDO_PASSWORD" ssh -i ~/.ssh/id_ed25519 sumon@innof.com "echo '$SUDO_PASSWORD' | sudo -S chown -R www-data:www-data /var/www/bangla24/wp-content/themes/bangla24v2/ && \
-          echo '$SUDO_PASSWORD' | sudo -S chmod -R 755 /var/www/bangla24/wp-content/themes/bangla24v2/ && \
-          echo '$SUDO_PASSWORD' | sudo -S find /var/www/bangla24/wp-content/themes/bangla24v2/ -type f -exec chmod 644 {} \;"
+          ssh -i ~/.ssh/id_ed25519 sumon@innof.com "cd /var/www/bangla24/wp-content/themes/bangla24v2/ && \
+          find . -type d -exec chmod 755 {} \; && \
+          find . -type f -exec chmod 644 {} \; && \
+          chmod 755 . && \
+          echo 'Permissions updated successfully'"
