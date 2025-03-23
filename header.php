@@ -60,6 +60,9 @@
 								?>
 							</nav>
 						<?php endif; ?>
+						<button id="dark-mode-toggle" class="dark-mode-toggle">
+							<i class="fas fa-moon"></i>
+						</button>
 					</div>
 				</div>
 			</div>
