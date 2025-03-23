@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Full git history for file tracking
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -23,26 +23,14 @@ jobs:
       - name: Build assets
         run: npm run build
 
-      - name: Prepare Deployment Files
+      - name: Deploy via Native Rsync
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          # Remove files that shouldn't be deployed
-          rm -rf node_modules .git .github tests
-          rm -f .gitignore README.md package*.json *.config.js
-
-      - name: Deploy via Rsync
-        uses: burnett01/rsync-deployments@5.3.1
-        with:
-          switches: -avz --delete
-          path: ./
-          remote_path: /var/www/bangla24/wp-content/themes/bangla24v2/
-          remote_host: innof.com
-          remote_user: sumon
-          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          exclude: |
-            node_modules/
-            .git/
-            .github/
-            tests/
-            *.md
-            package*.json
-            *.config.js
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          
+          rsync -avz --delete --exclude={'node_modules','.git','tests','*.md','package*.json','*.config.js'} \
+          -e "ssh -p 22 -o StrictHostKeyChecking=no" \
+          ./ sumon@innof.com:/var/www/bangla24/wp-content/themes/bangla24v2/
