@@ -31,9 +31,12 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /var/www/bangla24/wp-content/themes/bangla24v2/
-            rm -rf *
-            git clone https://github.com/mzahedalam/bangla24.git .
-            git checkout main
+            if [ ! -d .git ]; then
+              git clone https://github.com/mzahedalam/bangla24.git .
+            else
+              git fetch --all
+              git reset --hard origin/main
+            fi
             sudo chown -R www-data:www-data .
             sudo chmod -R 755 .
             sudo find . -type f -exec chmod 644 {} \;
