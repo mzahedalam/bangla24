@@ -100,31 +100,34 @@
     
     // Dark Mode Toggle
     function initDarkMode() {
-        // Check for saved preference
-        const darkModeEnabled = localStorage.getItem('darkMode') === 'enabled';
-        
-        // Create toggle button
-        const $darkModeToggle = $('<button class="dark-mode-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>');
-        $('.header-top-right').prepend($darkModeToggle);
-        
-        // Apply dark mode if enabled
-        if (darkModeEnabled) {
-            $('body').addClass('dark-mode');
-            $darkModeToggle.html('<i class="fas fa-sun"></i>');
-        }
-        
-        // Toggle dark mode on click
-        $darkModeToggle.on('click', function() {
-            $('body').toggleClass('dark-mode');
+        // Check if button already exists
+        if ($('#dark-mode-toggle').length === 0) {
+            // Check for saved preference
+            const darkModeEnabled = localStorage.getItem('darkMode') === 'enabled';
             
-            if ($('body').hasClass('dark-mode')) {
-                localStorage.setItem('darkMode', 'enabled');
-                $(this).html('<i class="fas fa-sun"></i>');
-            } else {
-                localStorage.setItem('darkMode', 'disabled');
-                $(this).html('<i class="fas fa-moon"></i>');
+            // Create toggle button
+            const $darkModeToggle = $('<button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>');
+            $('.header-top-right').append($darkModeToggle);
+            
+            // Apply dark mode if enabled
+            if (darkModeEnabled) {
+                $('body').addClass('dark-mode');
+                $darkModeToggle.html('<i class="fas fa-sun"></i>');
             }
-        });
+            
+            // Toggle dark mode on click
+            $darkModeToggle.on('click', function() {
+                $('body').toggleClass('dark-mode');
+                
+                if ($('body').hasClass('dark-mode')) {
+                    localStorage.setItem('darkMode', 'enabled');
+                    $(this).html('<i class="fas fa-sun"></i>');
+                } else {
+                    localStorage.setItem('darkMode', 'disabled');
+                    $(this).html('<i class="fas fa-moon"></i>');
+                }
+            });
+        }
     }
     
     // Initialize on document ready
