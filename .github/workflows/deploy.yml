@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -29,10 +31,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /var/www/bangla24/wp-content/themes/bangla24v2/
-            sudo -u www-data git stash
-            sudo -u www-data git clean -fd
-            sudo -u www-data git pull origin main
-            sudo -u www-data git reset --hard origin/main
+            rm -rf *
+            git clone https://github.com/mzahedalam/bangla24.git .
+            git checkout main
             sudo chown -R www-data:www-data .
             sudo chmod -R 755 .
             sudo find . -type f -exec chmod 644 {} \;
