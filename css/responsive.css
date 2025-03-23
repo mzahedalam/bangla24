@@ -3,7 +3,7 @@
 /* Mobile Menu Styles */
 .menu-toggle {
     display: none;
-    background-color: #1e73be;
+    background-color: var(--yellow);
     color: #fff;
     border: none;
     padding: 10px 15px;

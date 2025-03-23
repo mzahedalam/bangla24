@@ -912,3 +912,63 @@ img {
         font-size: 16px;
     }
 }
+
+/* Social Menu Styling */
+.social-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.social-menu li {
+    margin: 0 5px;
+}
+
+.social-menu a {
+    display: inline-block;
+    color: #666;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.social-menu a:hover {
+    color: var(--yellow);
+}
+
+.social-menu a[href*="facebook.com"]::before {
+    content: "\f39e";
+    font-family: "Font Awesome 5 Brands";
+}
+
+.social-menu a[href*="twitter.com"]::before,
+.social-menu a[href*="x.com"]::before {
+    content: "\f099";
+    font-family: "Font Awesome 5 Brands";
+}
+
+.social-menu a[href*="instagram.com"]::before {
+    content: "\f16d";
+    font-family: "Font Awesome 5 Brands";
+}
+
+.social-menu a[href*="youtube.com"]::before {
+    content: "\f167";
+    font-family: "Font Awesome 5 Brands";
+}
+
+.social-menu a[href*="linkedin.com"]::before {
+    content: "\f0e1";
+    font-family: "Font Awesome 5 Brands";
+}
+
+.social-menu .screen-reader-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}

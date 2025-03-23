@@ -23,7 +23,7 @@
 	<header id="masthead" class="site-header">
 		<div class="header-top">
 			<div class="container">
-				<div class="flex items-center justify-between p-0">
+				<div class="flex items-center justify-between p-0 m-0">
 					<div class="header-top-left">
 						<div class="date-time">
 							<i class="far fa-calendar-alt"></i> <?php echo esc_html( date_i18n( get_option( 'date_format' ) ) ); ?>
@@ -33,10 +33,11 @@
 							if ( has_nav_menu( 'social-menu' ) ) {
 								wp_nav_menu( array(
 									'theme_location' => 'social-menu',
-									'menu_class'     => 'social-menu',
+									'menu_class'     => 'social-menu flex items-center gap-3',
 									'depth'          => 1,
 									'link_before'    => '<span class="screen-reader-text">',
 									'link_after'     => '</span>',
+									'container'      => false,
 								) );
 							}
 							?>
