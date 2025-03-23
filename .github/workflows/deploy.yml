@@ -23,7 +23,8 @@ jobs:
       - name: Build assets
         run: npm run build
 
-      - name: Deploy via Native Rsync
+      # ===== SAFETY CHECKS START HERE =====
+      - name: Dry Run Deployment
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
@@ -31,6 +32,45 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           
+          # Test deployment without actual changes
+          rsync -avzn --delete --exclude={'node_modules','.git','tests','*.md','package*.json','*.config.js'} \
+          -e "ssh -p 22 -o StrictHostKeyChecking=no" \
+          ./ sumon@innof.com:/var/www/bangla24/wp-content/themes/bangla24v2/
+
+      - name: Verify Local Files
+        run: |
+          [ "$(ls -A ./)" ] || { echo "ERROR: No files to deploy!"; exit 1; }
+          [ -f ./index.php ] || { echo "ERROR: Critical file missing!"; exit 1; }
+
+      # ===== ACTUAL DEPLOYMENT =====
+      - name: Deploy via Native Rsync
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
           rsync -avz --delete --exclude={'node_modules','.git','tests','*.md','package*.json','*.config.js'} \
           -e "ssh -p 22 -o StrictHostKeyChecking=no" \
           ./ sumon@innof.com:/var/www/bangla24/wp-content/themes/bangla24v2/
+
+      # ===== POST-DEPLOYMENT VERIFICATION =====
+      - name: Verify Remote Files
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          
+          # Check file count matches
+          local_count=$(find . -type f | wc -l)
+          remote_count=$(ssh sumon@innof.com "find /var/www/bangla24/wp-content/themes/bangla24v2/ -type f | wc -l")
+          
+          if [ "$local_count" -ne "$remote_count" ]; then
+            echo "CRITICAL: File count mismatch! Local: $local_count vs Remote: $remote_count"
+            exit 1
+          fi
+          
+          # Verify specific critical file
+          ssh sumon@innof.com "[ -f /var/www/bangla24/wp-content/themes/bangla24v2/index.php ]" || {
+            echo "ERROR: index.php missing on server!"
+            exit 1
+          }
