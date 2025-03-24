@@ -107,6 +107,8 @@
             
             // Create toggle button
             const $darkModeToggle = $('<button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>');
+            
+            // Append to header-top-right instead of inside it
             $('.header-top-right').append($darkModeToggle);
             
             // Apply dark mode if enabled
