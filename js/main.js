@@ -137,6 +137,53 @@
         initResponsiveVideos();
         initImageLightbox();
         initDarkMode();
+        initSearchToggle(); // Added this line to call the search toggle function
     });
+    
+    // Search Form Toggle
+    function initSearchToggle() {
+        // Use first() to ensure we only target the first toggle button if multiple exist
+        const $searchToggle = $('.search-toggle').first();
+        const $searchContainer = $('.search-form-container').first();
+        const $searchForm = $('.search-form').first();
+        
+        if ($searchToggle.length && $searchContainer.length) {
+            // Show search form when toggle is clicked
+            $searchToggle.on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $searchContainer.toggleClass('hidden');
+                
+                if (!$searchContainer.hasClass('hidden')) {
+                    setTimeout(() => {
+                        $('.search-field').focus();
+                    }, 100);
+                }
+            });
+            
+            // Hide search form when clicking outside
+            $(document).on('click', function(event) {
+                if (!$searchContainer.is(event.target) && 
+                    $searchContainer.has(event.target).length === 0 && 
+                    !$searchToggle.is(event.target)) {
+                    $searchContainer.addClass('hidden');
+                }
+            });
+            
+            // Hide search form after submission
+            if ($searchForm.length) {
+                $searchForm.on('submit', function() {
+                    setTimeout(() => {
+                        $searchContainer.addClass('hidden');
+                    }, 100);
+                });
+            }
+        }
+    }
+    
+    // Remove the duplicate vanilla JS implementation
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     initSearchToggle();
+    // });
     
 })(jQuery);

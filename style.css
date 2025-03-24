@@ -649,6 +649,10 @@ body{
   display: grid;
 }
 
+.hidden{
+  display: none;
+}
+
 .w-24{
   width: 6rem;
 }

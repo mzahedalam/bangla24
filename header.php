@@ -44,11 +44,20 @@
 						</div>
 					</div>
 					<div class="search-form">
-                        <form role="search" method="get" class="search-form-container" action="<?php echo esc_url(home_url('/')); ?>">
-                            <input type="search" class="search-field" placeholder="<?php echo esc_attr_x('Search...', 'placeholder', 'modern-news-portal'); ?>" value="<?php echo get_search_query(); ?>" name="s">
-                            <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
-                        </form>
+                        <div class="search-form-wrapper">
+                            <button type="button" id="search-toggle" class="search-toggle">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <div class="search-form-container hidden">
+                                <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
+                                    <input type="search" class="search-field" placeholder="<?php echo esc_attr_x('Search...', 'placeholder', 'modern-news-portal'); ?>" value="<?php echo get_search_query(); ?>" name="s">
+                                    <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
+                                    <!-- Removed search-close button -->
+                                </form>
+                            </div>
+                        </div>
                     </div>
+                    <!-- Removed duplicate search form wrapper here -->
 					<div class="header-top-right p-0 m-0">
 						<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
 							<nav class="top-navigation">
