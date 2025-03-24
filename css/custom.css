@@ -1079,6 +1079,39 @@ body.dark-mode .search-field {
     color: #f0f0f0;
 }
 
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    color: var(--black);
+    cursor: pointer;
+    padding: 5px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-toggle:hover {
+    color: var(--yellow);
+}
+
+/* Header Top Right */
+.header-top-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Ensure controls are always visible */
+.header-top-right .search-form-wrapper,
+.header-top-right .dark-mode-toggle {
+    display: flex;
+    align-items: center;
+}
+
 /* Sticky Header */
 .main-navigation.sticky {
     position: fixed;

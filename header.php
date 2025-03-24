@@ -26,14 +26,14 @@
 				<div class="flex items-center justify-between p-0 m-0">
 					<div class="header-top-left">
 						<div class="date-time">
-							<i class="far fa-calendar-alt"></i> <?php echo esc_html( date_i18n( get_option( 'date_format' ) ) ); ?>
+							<i class="far fa-calendar-alt"></i> <span><?php echo esc_html( date_i18n( get_option( 'date_format' ) ) ); ?></span>
 						</div>
-						<div class="social-links flex items-center">
+						<div class="social-links">
 							<?php
 							if ( has_nav_menu( 'social-menu' ) ) {
 								wp_nav_menu( array(
 									'theme_location' => 'social-menu',
-									'menu_class'     => 'social-menu flex items-center gap-3',
+									'menu_class'     => 'social-menu flex items-center gap-2',
 									'depth'          => 1,
 									'link_before'    => '<span class="screen-reader-text">',
 									'link_after'     => '</span>',
@@ -43,20 +43,18 @@
 							?>
 						</div>
 					</div>
-					<div class="search-form">
-                        <div class="search-form-wrapper">
-                            <button type="button" id="search-toggle" class="search-toggle">
-                                <i class="fas fa-search"></i>
-                            </button>
-                            <div class="search-form-container hidden">
-                                <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
-                                    <input type="search" class="search-field" placeholder="<?php echo esc_attr_x('Search...', 'placeholder', 'modern-news-portal'); ?>" value="<?php echo get_search_query(); ?>" name="s">
-                                    <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-					<div class="header-top-right p-0 m-0">
+					<div class="header-top-right">
+						<div class="search-form-wrapper">
+							<button type="button" class="search-toggle">
+								<i class="fas fa-search"></i>
+							</button>
+							<div class="search-form-container hidden">
+								<form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
+									<input type="search" class="search-field" placeholder="<?php echo esc_attr_x('Search...', 'placeholder', 'modern-news-portal'); ?>" value="<?php echo get_search_query(); ?>" name="s">
+									<button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
+								</form>
+							</div>
+						</div>
 						<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
 							<nav class="top-navigation">
 								<?php
@@ -64,6 +62,7 @@
 									'theme_location' => 'top-menu',
 									'menu_class'     => 'top-menu',
 									'depth'          => 1,
+									'container'      => false, // Add this line to remove the container div
 								) );
 								?>
 							</nav>

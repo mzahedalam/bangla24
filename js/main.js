@@ -188,4 +188,15 @@
     //     initSearchToggle();
     // });
     
+    // Inside your document ready function
+    $(document).ready(function() {
+        // Update top menu handling if needed
+        $('.top-navigation .top-menu').on('click', 'a', function(e) {
+            if ($(window).width() <= 768) {
+                e.preventDefault();
+                $(this).next('ul').slideToggle();
+            }
+        });
+    });
+    
 })(jQuery);
