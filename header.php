@@ -57,7 +57,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Removed duplicate search form wrapper here -->
 					<div class="header-top-right p-0 m-0">
 						<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
 							<nav class="top-navigation">

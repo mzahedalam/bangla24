@@ -23,7 +23,7 @@ body {
     font-family: 'Noto Sans Bengali', Arial, sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    color: #333;
+    color: var(--black);
     background-color: #f8f8f8;
 }
 
@@ -124,7 +124,7 @@ img {
 .search-toggle {
     background: none;
     border: none;
-    color: var(--black);
+    color: var(--yellow);
     cursor: pointer;
     font-size: 16px;
     padding: 5px 10px;
@@ -200,7 +200,7 @@ img {
 }
 
 .top-menu a {
-    color: #333;
+    color: var(--black);
     font-size: 14px;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -235,14 +235,14 @@ img {
 
 .date-time {
     font-size: 14px;
-    color: #666;
+    color: var(--black);
     margin-right: 15px;
 }
 
 .social-links a {
     display: inline;
     margin-right: 10px;
-    color: #666;
+    color: var(--black);
 }
 
 .social-links a:hover {
@@ -327,7 +327,7 @@ img {
 }
 
 .main-menu a:hover {
-    background-color: #0d47a1;
+    background-color: var(--black);
 }
 
 .main-menu .sub-menu {
