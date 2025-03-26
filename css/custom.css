@@ -1,3 +1,4 @@
+@import url('./navigation.css');
 /* 
 This is the main stylesheet for the Modern News Portal theme.
 Additional styles are loaded from the /css directory.
@@ -248,94 +249,18 @@ img {
     margin: 5px 0 0;
 }
 
-/* Navigation */
-.main-menu-wrapper {
+
+/* Header Top Styles */
+.header-top {
+    background-color: #f8f8f8;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.header-top-right {
     display: flex;
     align-items: center;
-    flex-grow: 1;
-}
-.nav-wrapper {
-    display: flex;
-    align-items:center;
-    width: 100%;
-}
-.main-navigation {
-    background-color: var(--black);
-}
-.main-nav {
-    position: relative;
-}
-
-.main-menu {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.main-menu li {
-    position: relative;
-}
-
-.main-menu a {
-    display: block;
-    padding: 15px 20px;
-    color: #fff;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.main-menu a:hover {
-    background-color: var(--black);
-}
-
-.main-menu .sub-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    min-width: 200px;
-    display: none;
-    z-index: 999;
-}
-
-.main-menu .sub-menu li {
-    width: 100%;
-}
-
-.main-menu .sub-menu a {
-    color: #333;
-    padding: 10px 15px;
-}
-
-.main-menu .sub-menu a:hover {
-    background-color: #f5f5f5;
-    color: #1e73be;
-}
-
-.main-menu li:hover > .sub-menu {
-    display: block;
-}
-
-.home-link {
-    display: flex;
-    align-items: center;
-    padding: 15px 20px;
-    color: #fff;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.home-link i {
-    margin-right: 8px;
-}
-
-.home-link:hover {
-    background-color: var(--black);
-    color: #fff;
+    gap: 1rem;
 }
 
 /* Mobile Menu Styles */

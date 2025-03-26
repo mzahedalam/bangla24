@@ -55,18 +55,16 @@
 								</form>
 							</div>
 						</div>
-						<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
-							<nav class="top-navigation">
-								<?php
-								wp_nav_menu( array(
-									'theme_location' => 'top-menu',
-									'menu_class'     => 'top-menu',
-									'depth'          => 1,
-									'container'      => false, // Add this line to remove the container div
-								) );
-								?>
-							</nav>
-						<?php endif; ?>
+						<?php
+						wp_nav_menu(array(
+							'theme_location' => 'top-menu',
+							'menu_class'     => 'top-menu',
+							'container'      => 'nav',
+							'container_class' => 'top-navigation',
+							'fallback_cb'    => false,
+							'depth'          => 1,
+						));
+						?>
 					</div>
 				</div>
 			</div>
@@ -106,25 +104,33 @@
 			</div>
 		</div>
 
-		<div class="main-navigation">
-			<div class="container">
-				<nav id="site-navigation" class="main-nav">
-					<?php
-					if (has_nav_menu('primary')) {
-						wp_nav_menu(array(
-							'theme_location' => 'primary',
-							'menu_id'        => 'primary-menu',
-							'menu_class'     => 'main-menu',
-							'container'      => false,
-							'depth'          => 2,
-						));
-					} else {
-						echo '<div class="menu-notice">' . esc_html__('Please assign a menu to the Primary Menu location', 'modern-news-portal') . '</div>';
-					}
-					?>
-				</nav>
-			</div>
-		</div>
+		<!-- Keep only this main navigation section -->
+<div class="main-navigation">
+    <div class="container">
+        <nav id="site-navigation" class="main-nav">
+            <div class="mobile-menu-wrapper">
+                <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <?php
+            if (has_nav_menu('primary')) {
+                wp_nav_menu(array(
+                    'theme_location' => 'primary',
+                    'menu_id'        => 'primary-menu',
+                    'menu_class'     => 'main-menu',
+                    'container'      => false,
+                    'depth'          => 2,
+                ));
+            } else {
+                echo '<div class="menu-notice">' . esc_html__('Please assign a menu to the Primary Menu location', 'modern-news-portal') . '</div>';
+            }
+            ?>
+        </nav>
+    </div>
+</div>
+
+		
 
 		<?php if ( is_front_page() && is_home() ) : ?>
 			<div class="breaking-news">
