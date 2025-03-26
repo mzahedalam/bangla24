@@ -249,13 +249,28 @@ img {
 }
 
 /* Navigation */
+.main-menu-wrapper {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+.nav-wrapper {
+    display: flex;
+    align-items:center;
+    width: 100%;
+}
 .main-navigation {
-    background-color: #ffbe00;
+    background-color: var(--black);
+}
+.main-nav {
+    position: relative;
 }
 
 .main-menu {
     display: flex;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .main-menu li {
@@ -267,6 +282,8 @@ img {
     padding: 15px 20px;
     color: #fff;
     font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .main-menu a:hover {
@@ -302,15 +319,34 @@ img {
     display: block;
 }
 
+.home-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.home-link i {
+    margin-right: 8px;
+}
+
+.home-link:hover {
+    background-color: var(--black);
+    color: #fff;
+}
+
 /* Mobile Menu Styles */
 .menu-toggle {
     display: none;
-    background: none;
+    background: transparent;
     border: none;
     color: #fff;
     font-size: 24px;
     cursor: pointer;
-    padding: 10px;
+    padding: 15px;
 }
 
 .dropdown-toggle {
@@ -324,6 +360,58 @@ img {
     position: absolute;
     right: 0;
     top: 10px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) { 
+    .menu-toggle {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background: transparent;
+        border: none;
+        color: #fff;
+        text-align: left;
+        cursor: pointer;
+    }
+    .main-menu-wrapper {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--black);
+    }
+
+    .main-menu-wrapper.show {
+        display: flex;
+    }
+
+    .main-menu {
+        flex-direction: column;
+        width: 100%;
+    }
+    .main-menu li {
+        width: 100%;
+    }
+
+    .submenu-toggle {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 15px;
+        background: transparent;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .submenu-toggle.active i {
+        transform: rotate(180deg);
+    }
+
+    .sub-menu {
+        display: none;
+        padding-left: 20px;
+    }
 }
 
 /* Breaking News Ticker */

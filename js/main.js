@@ -190,13 +190,24 @@
     
     // Inside your document ready function
     $(document).ready(function() {
-        // Update top menu handling if needed
-        $('.top-navigation .top-menu').on('click', 'a', function(e) {
-            if ($(window).width() <= 768) {
-                e.preventDefault();
-                $(this).next('ul').slideToggle();
-            }
+        // Menu Toggle
+        $('.menu-toggle').on('click', function() {
+            $('.main-menu-wrapper').toggleClass('show');
+            $(this).attr('aria-expanded', function(i, value) {
+                return value === 'false' ? 'true' : 'false';
+            });
         });
+    
+        // Handle submenu toggles on mobile
+        if ($(window).width() <= 768) {
+            $('.main-menu .menu-item-has-children > a').after('<button class="submenu-toggle"><i class="fas fa-chevron-down"></i></button>');
+            
+            $('.submenu-toggle').on('click', function(e) {
+                e.preventDefault();
+                $(this).toggleClass('active');
+                $(this).siblings('.sub-menu').slideToggle();
+            });
+        }
     });
     
 })(jQuery);

@@ -109,17 +109,20 @@
 		<div class="main-navigation">
 			<div class="container">
 				<nav id="site-navigation" class="main-nav">
-					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-						<i class="fas fa-bars"></i> <?php esc_html_e( 'Menu', 'modern-news-portal' ); ?>
-					</button>
 					<?php
-					wp_nav_menu( array(
-						'theme_location' => 'primary',
-						'menu_id'        => 'primary-menu',
-						'menu_class'     => 'main-menu',
-					) );
+					if (has_nav_menu('primary')) {
+						wp_nav_menu(array(
+							'theme_location' => 'primary',
+							'menu_id'        => 'primary-menu',
+							'menu_class'     => 'main-menu',
+							'container'      => false,
+							'depth'          => 2,
+						));
+					} else {
+						echo '<div class="menu-notice">' . esc_html__('Please assign a menu to the Primary Menu location', 'modern-news-portal') . '</div>';
+					}
 					?>
-				</nav><!-- #site-navigation -->
+				</nav>
 			</div>
 		</div>
 
