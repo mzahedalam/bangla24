@@ -29,13 +29,13 @@ body {
 }
 
 a {
-    color: #1e73be;
+    color: var(--red);
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 a:hover {
-    color: #0d47a1;
+    color: var(--yellow);
 }
 
 img {
