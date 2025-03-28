@@ -291,7 +291,7 @@ function modern_news_portal_sanitize_checkbox( $checked ) {
  * Generate custom CSS based on customizer settings
  */
 function modern_news_portal_customizer_css() {
-	$primary_color = get_theme_mod( 'modern_news_portal_primary_color', '#1e73be' );
+	$primary_color = get_theme_mod( 'modern_news_portal_primary_color', '#ffbe00' );
 	$secondary_color = get_theme_mod( 'modern_news_portal_secondary_color', '#333333' );
 	
 	$custom_css = "
