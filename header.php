@@ -108,7 +108,7 @@
 <div class="main-navigation">
     <div class="container">
         <nav id="site-navigation" class="main-nav">
-			<div>Home</div>
+			
             <div class="mobile-menu-wrapper">
                 <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
                     <i class="fas fa-bars"></i>

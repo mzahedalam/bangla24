@@ -37,6 +37,7 @@
 }
 
 .main-menu a:hover {
+    color: #fff;
     background-color: var(--yellow);
 }
 

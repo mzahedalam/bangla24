@@ -18,6 +18,7 @@ Black - #152841
     --yellow: #ffbe00;
     --red: #e53935;
     --black: #152841;
+    --txt-black: #090909;
 }
 
 body {
@@ -29,7 +30,7 @@ body {
 }
 
 a {
-    color: var(--black);
+    color: var(--txt-black);
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -111,7 +112,7 @@ img {
 }
 
 .social-links a:hover {
-    color: #1e73be;
+    color: var(--red);
 }
 
 .dark-mode-toggle {
