@@ -12,7 +12,7 @@
             <?php if ( has_post_thumbnail() ) : ?>
                 <?php the_post_thumbnail( 'modern-news-portal-featured-medium' ); ?>
             <?php else : ?>
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/images/default-featured-medium.jpg' ); ?>" alt="<?php the_title_attribute(); ?>">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/images/default-featured-image.png' ); ?>" alt="<?php the_title_attribute(); ?>">
             <?php endif; ?>
         </a>
     </div>
