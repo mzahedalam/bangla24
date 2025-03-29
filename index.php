@@ -49,12 +49,14 @@ get_header();
                         ?>
                     </div>
                     
-                    <div class="pagination">
+                    <div class="pagination-wrapper">
                         <?php
                         the_posts_pagination( array(
                             'mid_size'  => 2,
-                            'prev_text' => '<i class="fas fa-angle-left"></i>',
-                            'next_text' => '<i class="fas fa-angle-right"></i>',
+                            'prev_text' => '<i class="fas fa-chevron-left"></i> Previous',
+                            'next_text' => 'Next <i class="fas fa-chevron-right"></i>',
+                            'screen_reader_text' => __('Posts navigation', 'modern-news-portal'),
+                            'class' => 'pagination',
                         ) );
                         ?>
                     </div>
