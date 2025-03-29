@@ -1,3 +1,18 @@
+/*
+Theme Name: Bangla News Portal
+Theme URI: https://github.com/mzalamfr/wordpress/theme
+Author: Zahed Alam
+Author URI: https://innof.com/zahed/
+Description: A modern and responsive news portal theme built with WordPress. Features include breaking news ticker, featured posts section, custom widgets, and dark mode support.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: modern-news-portal
+Tags: news, blog, grid-layout, one-column, two-columns, right-sidebar, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, theme-options, translation-ready
+*/
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&display=swap');
 
 *, ::before, ::after{
