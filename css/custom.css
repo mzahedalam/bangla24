@@ -1230,7 +1230,7 @@ body.dark-mode .search-field {
 
 .widget-title {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 15px;
     padding-bottom: 10px;
     border-bottom: 2px solid #e53935;
@@ -1271,5 +1271,78 @@ body.dark-mode .search-field {
     
     .widget-title {
         font-size: 18px;
+    }
+}
+
+/* Share buttons section */
+
+.share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+    margin-top: 20px;
+}
+
+.share-buttons span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666666;
+    margin-right: 6px;
+    white-space: nowrap;
+}
+
+/* circular icon buttons */
+.share-buttons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #f4f6f8;
+    color: #222222;
+    text-decoration: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    box-shadow: 0 2px 6px rgba(16,24,40,0.04);
+}
+
+/* icon sizing */
+.share-buttons a i {
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* hover state */
+.share-buttons a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(16,24,40,0.08);
+}
+
+/* brand colors */
+.share-buttons a.facebook { background: #1877f2; color: #fff; }
+.share-buttons a.twitter  { background: #1da1f2; color: #fff; }
+.share-buttons a.linkedin { background: #0a66c2; color: #fff; }
+.share-buttons a.pinterest{ background: #e60023; color: #fff; }
+.share-buttons a.email    { background: #6c757d; color: #fff; }
+
+/* responsive: stack label above buttons on small screens */
+@media (max-width: 480px) {
+    .share-buttons {
+        gap: 8px;
+        padding: 10px;
+    }
+    .share-buttons span {
+        width: 100%;
+        margin-bottom: 6px;
+    }
+    .share-buttons a {
+        width: 40px;
+        height: 40px;
     }
 }
