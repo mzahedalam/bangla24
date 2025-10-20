@@ -10,14 +10,21 @@
     <header class="entry-header">
         <?php echo modern_news_portal_get_category(); ?>
         
-        <h1 class="entry-title"><?php the_title(); ?></h1>
+        <h1 class="entry-title"><?php the_title(); ?></h1> <hr/>
         
         <div class="entry-meta">
-            <?php echo modern_news_portal_get_author(); ?>
-            <?php echo modern_news_portal_get_date(); ?>
-            <?php echo modern_news_portal_get_comments_count(); ?>
-            <span class="article-views"><i class="far fa-eye"></i> <?php echo get_post_meta(get_the_ID(), 'post_views_count', true) ? get_post_meta(get_the_ID(), 'post_views_count', true) : '0'; ?> <?php esc_html_e('Views', 'modern-news-portal'); ?></span>
-        </div>
+    <span class="article-author">
+        <i class="fa-regular fa-pen-to-square"></i>
+        <?php the_author_posts_link(); ?>
+    </span>
+    <?php echo modern_news_portal_get_date(); ?> &nbsp; |
+    <?php echo modern_news_portal_get_comments_count(); ?>
+    <span class="article-views">
+        <i class="far fa-eye"></i> 
+        <?php echo get_post_meta(get_the_ID(), 'post_views_count', true) ? get_post_meta(get_the_ID(), 'post_views_count', true) : '0'; ?> 
+        <?php esc_html_e('Views', 'modern-news-portal'); ?>
+    </span>
+</div>
         
         <?php if ( has_post_thumbnail() ) : ?>
             <div class="entry-thumbnail">
@@ -65,9 +72,12 @@
             <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>" target="_blank" rel="nofollow" class="linkedin">
                 <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="https://api.whatsapp.com/send?text=<?php echo urlencode(get_the_title() . ' - ' . get_permalink()); ?>" target="_blank" rel="nofollow" class="whatsapp">
-            <i class="fab fa-whatsapp"></i>
+            <a href="https://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php the_post_thumbnail_url( 'full' ); ?>&description=<?php the_title(); ?>" target="_blank" rel="nofollow" class="pinterest">
+                <i class="fab fa-pinterest-p"></i>
             </a>
+            <a href="https://api.whatsapp.com/send?text=<?php echo urlencode(get_the_title() . ' - ' . get_permalink()); ?>" target="_blank" rel="nofollow" class="whatsapp">
+    <i class="fab fa-whatsapp"></i>
+</a>
             <a href="mailto:?subject=<?php the_title(); ?>&body=<?php the_permalink(); ?>" class="email">
                 <i class="fas fa-envelope"></i>
             </a>
