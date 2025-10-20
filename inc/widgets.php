@@ -4,11 +4,15 @@
  *
  * @package Modern_News_Portal
  */
-
+if (!defined('ABSPATH')) {
+	exit;
+}
 /**
  * Register widget areas.
  */
+
 function modern_news_portal_widgets_init() {
+	//Main Sidebar
 	register_sidebar(
 		array(
 			'name'          => esc_html__( 'Main Sidebar', 'modern-news-portal' ),
@@ -32,6 +36,18 @@ function modern_news_portal_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
+
+	register_sidebar(
+        array(
+            'name'          => esc_html__('Main Sidebar', 'modern-news-portal'),
+            'id'            => 'sidebar-1',
+            'description'   => esc_html__('Add widgets here to appear in your sidebar.', 'modern-news-portal'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
 	
 	register_sidebar(
 		array(
