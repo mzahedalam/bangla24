@@ -57,7 +57,7 @@ get_header();
                     </div>
                     
                     <div class="related-posts">
-                        <h3 class="related-posts-title"><?php esc_html_e( 'RELATED P', 'modern-news-portal' ); ?></h3>
+                        <h3 class="related-posts-title"><?php esc_html_e( 'সম্পর্কিত খবর', 'modern-news-portal' ); ?></h3>
                         <div class="related-posts-grid">
                             <?php
                             // Get current post categories
