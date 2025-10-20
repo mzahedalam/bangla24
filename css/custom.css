@@ -1331,6 +1331,16 @@ body.dark-mode .search-field {
 .share-buttons a.pinterest{ background: #e60023; color: #fff; }
 .share-buttons a.email    { background: #6c757d; color: #fff; }
 
+/* WhatsApp share button */
+.share-buttons a.whatsapp {
+    background: #25D366;
+    color: #fff;
+}
+
+.share-buttons a.whatsapp:hover {
+    background: #128C7E;
+}
+
 /* responsive: stack label above buttons on small screens */
 @media (max-width: 480px) {
     .share-buttons {

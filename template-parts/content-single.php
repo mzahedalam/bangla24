@@ -65,8 +65,8 @@
             <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>" target="_blank" rel="nofollow" class="linkedin">
                 <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="https://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php the_post_thumbnail_url( 'full' ); ?>&description=<?php the_title(); ?>" target="_blank" rel="nofollow" class="pinterest">
-                <i class="fab fa-pinterest-p"></i>
+            <a href="https://api.whatsapp.com/send?text=<?php echo urlencode(get_the_title() . ' - ' . get_permalink()); ?>" target="_blank" rel="nofollow" class="whatsapp">
+            <i class="fab fa-whatsapp"></i>
             </a>
             <a href="mailto:?subject=<?php the_title(); ?>&body=<?php the_permalink(); ?>" class="email">
                 <i class="fas fa-envelope"></i>
