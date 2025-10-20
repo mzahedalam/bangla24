@@ -427,6 +427,14 @@ function modern_news_portal_enqueue_responsive_scripts() {
         array(),
         '6.4.2'
     );
+
+	// Enqueue Google Fonts
+    wp_enqueue_style(
+        'google-fonts',
+        'https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap',
+        array(),
+        null
+    );
 }
 add_action( 'wp_enqueue_scripts', 'modern_news_portal_enqueue_responsive_scripts' );
 
