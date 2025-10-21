@@ -150,10 +150,18 @@ add_action( 'after_setup_theme', 'modern_news_portal_content_width', 0 );
  */
 function modern_news_portal_scripts() {
 	// Enqueue Google Fonts
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap', array(), null );
+	// wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap', array(), null );
 	
-	// Enqueue Font Awesome
-	wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css', array(), '5.15.4' );
+	// // Enqueue Font Awesome
+	// wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css', array(), '5.15.4' );
+
+	// Enqueue Font Awesome 6 from CDN
+    wp_enqueue_style(
+        'font-awesome-6',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css',
+        array(),
+        '6.4.2'
+    );
 	
 	// Main stylesheet (includes processed Tailwind CSS and custom styles)
 	wp_enqueue_style( 'modern-news-portal-style', get_stylesheet_uri(), array(), MODERN_NEWS_PORTAL_VERSION );
@@ -420,13 +428,7 @@ require get_template_directory() . '/inc/responsive.php';
 function modern_news_portal_enqueue_responsive_scripts() {
     wp_enqueue_script( 'modern-news-portal-responsive', get_template_directory_uri() . '/js/responsive.js', array('jquery'), MODERN_NEWS_PORTAL_VERSION, true );
 
-	// Enqueue Font Awesome 6 from CDN
-    wp_enqueue_style(
-        'font-awesome-6',
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css',
-        array(),
-        '6.4.2'
-    );
+	
 
 	// Enqueue Google Fonts
     wp_enqueue_style(
