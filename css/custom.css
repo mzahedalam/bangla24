@@ -30,6 +30,12 @@ body {
     background-color: #f8f8f8;
 }
 
+i {
+    color: #e53935; /* change to any hex/RGB color you prefer */
+    font-size: 14px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
 
 a {
     color: var(--txt-black);
