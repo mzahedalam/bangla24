@@ -219,7 +219,7 @@ function modern_news_portal_get_author() {
 	$author_avatar = get_avatar( $author_id, 20 );
 	$author_name = get_the_author_meta( 'display_name' );
 	
-	return '<span class="article-author">' . $author_avatar . ' ' . esc_html( $author_name ) . '</span>';
+	return '<span class="article-author">' . '<i class="fa-regular fa-pen-to-square"></i>'.' '. esc_html( $author_name ) . '</span>';
 }
 
 /**

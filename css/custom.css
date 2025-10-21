@@ -608,12 +608,20 @@ img {
     display: flex;
     align-items: center;
     font-size: 12px;
+    text-transform: uppercase;
     color: #666;
     margin-bottom: 10px;
 }
 
 .article-author {
     margin-right: 15px;
+}
+
+.article-meta i {
+    color: #e53935; /* change to any hex/RGB color you prefer */
+    font-size: 14px;
+    margin-right: 6px;
+    vertical-align: middle;
 }
 
 .article-excerpt {
