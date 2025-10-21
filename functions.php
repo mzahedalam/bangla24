@@ -152,7 +152,7 @@ function modern_news_portal_scripts() {
 	// Enqueue Google Fonts
     wp_enqueue_style(
         'google-fonts',
-        'https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap',
+        'https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&display=swap',
         array(),
         null
     );
