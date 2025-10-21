@@ -1377,6 +1377,45 @@ body.dark-mode .search-field {
     }
 }
 
+/* New share button after the read more link on frontpage */
+/* Article Share Buttons */
+.article-share {
+    margin-top: 3px;
+    padding-top: 3px;
+}
+
+.article-share .share-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.article-share .share-buttons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: #fff;
+    transition: transform 0.2s ease;
+}
+
+.article-share .share-buttons a:hover {
+    transform: translateY(-3px);
+}
+
+.article-share .share-buttons .facebook {
+    background: #1877f2;
+}
+
+.article-share .share-buttons .twitter {
+    background: #1da1f2;
+}
+
+.article-share .share-buttons .whatsapp {
+    background: #25d366;
+}
+
 /* Tags Links Styling */
 .tags-links {
     display: flex;
