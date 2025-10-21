@@ -170,6 +170,14 @@ function modern_news_portal_scripts() {
 	
 	// Custom CSS
 	wp_enqueue_style( 'modern-news-portal-custom', get_template_directory_uri() . '/css/custom.css', array(), MODERN_NEWS_PORTAL_VERSION );
+
+	//Responsive CSS
+	wp_enqueue_style(
+        'modern-news-portal-responsive',
+        get_template_directory_uri() . '/css/responsive.css',
+        array('modern-news-portal-style'),
+        MODERN_NEWS_PORTAL_VERSION
+    );
 	
 	// Navigation script
 	wp_enqueue_script( 'modern-news-portal-navigation', get_template_directory_uri() . '/js/navigation.js', array(), MODERN_NEWS_PORTAL_VERSION, true );

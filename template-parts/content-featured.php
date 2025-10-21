@@ -21,7 +21,8 @@ if ($count == 0) : // First featured post
             <?php endif; ?>
             <div class="featured-column-content">
                 <?php echo modern_news_portal_get_category(); ?>
-                <h2 class="featured-column-title"><?php the_title(); ?></h2>
+                <h2 class="featured-column-title">
+                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>  </h2>
                 <div class="featured-column-meta">
                     <?php echo modern_news_portal_get_date(); ?>
                 </div>
@@ -38,7 +39,8 @@ if ($count == 0) : // First featured post
             <?php endif; ?>
             <div class="featured-column-content">
                 <?php echo modern_news_portal_get_category(); ?>
-                <h2 class="featured-column-title"><?php the_title(); ?></h2>
+                <h2 class="featured-column-title">
+                    <a href="<?php the_permalink(); ?>"> <?php the_title(); ?></a></h2>
                 <div class="featured-column-meta">
                     <?php echo modern_news_portal_get_date(); ?>
                 </div>
@@ -55,7 +57,8 @@ if ($count == 0) : // First featured post
             <?php endif; ?>
             <div class="featured-column-content">
                 <?php echo modern_news_portal_get_category(); ?>
-                <h2 class="featured-column-title"><?php the_title(); ?></h2>
+                <h2 class="featured-column-title">
+                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                 <div class="featured-column-meta">
                     <?php echo modern_news_portal_get_date(); ?>
                 </div>

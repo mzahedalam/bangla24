@@ -160,6 +160,26 @@
     </div>
 </div>
 
+<!-- testing menu  -->
+<div class="main-navigation">
+    <div class="container">
+        <nav id="site-navigation" class="main-nav">
+            <div class="scroll-menu-wrapper">
+                <?php
+                if (has_nav_menu('primary')) {
+                    wp_nav_menu(array(
+                        'theme_location' => 'primary',
+                        'menu_id'        => 'primary-menu',
+                        'menu_class'     => 'scroll-menu',
+                        'container'      => false,
+                        'depth'          => 1,
+                    ));
+                }
+                ?>
+            </div>
+        </nav>
+    </div>
+</div>
 		
 
 		<?php if ( is_front_page() && is_home() ) : ?>
