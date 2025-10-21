@@ -36,5 +36,4 @@
         <?php esc_html_e( 'Read More', 'modern-news-portal' ); ?> <i class="fas fa-arrow-right"></i>
     </a>
 
-</div>
 </article>
