@@ -1554,6 +1554,7 @@ body.dark-mode .search-field {
 /* Title next to thumbnail */
 .related-post-title {
     flex: 1;
+    margin-top: 5px;
 }
 .related-post-title a {
     display: block;
