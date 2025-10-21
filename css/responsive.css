@@ -281,6 +281,21 @@
     font-size: 12px;
 }
 
+/* article section */
+.article-image img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.article-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    line-height: 1.0;
+}
+
 /* Small Mobile Styles */
 @media (max-width: 576px) {
     /* ... small mobile styles ... */
