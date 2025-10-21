@@ -13,6 +13,35 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
+	<?php
+    // Social sharing meta tags
+    if (is_single()) {
+        $post_id = get_the_ID();
+        $excerpt = wp_trim_words(get_the_excerpt(), 20, '...');
+        $featured_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
+        $site_name = get_bloginfo('name');
+        ?>
+        <!-- Open Graph Tags -->
+        <meta property="og:site_name" content="<?php echo esc_attr($site_name); ?>" />
+        <meta property="og:title" content="<?php echo esc_attr(get_the_title()); ?>" />
+        <meta property="og:description" content="<?php echo esc_attr($excerpt); ?>" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="<?php echo esc_url(get_permalink()); ?>" />
+        <?php if (has_post_thumbnail()) : ?>
+            <meta property="og:image" content="<?php echo esc_url($featured_image[0]); ?>" />
+            <meta property="og:image:width" content="<?php echo esc_attr($featured_image[1]); ?>" />
+            <meta property="og:image:height" content="<?php echo esc_attr($featured_image[2]); ?>" />
+            <meta property="og:image:alt" content="<?php echo esc_attr(get_the_title()); ?>" />
+        <?php endif; ?>
+
+        <!-- Twitter Card Tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="<?php echo esc_attr(get_the_title()); ?>" />
+        <meta name="twitter:description" content="<?php echo esc_attr($excerpt); ?>" />
+        <?php if (has_post_thumbnail()) : ?>
+            <meta name="twitter:image" content="<?php echo esc_url($featured_image[0]); ?>" />
+        <?php endif; ?>
+    <?php } ?>
 </head>
 
 <body <?php body_class(); ?>>
