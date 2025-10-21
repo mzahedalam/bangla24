@@ -1467,6 +1467,7 @@ body.dark-mode .search-field {
 
 .author-info h3 {
     font-size: 20px;
+    text-transform: capitalize;
     font-weight: 600;
     color: #152841;
     margin: 0 0 10px;
@@ -1573,6 +1574,13 @@ body.dark-mode .search-field {
     margin-top: 10px;
     font-size: 13px;
     color: #777;
+}
+
+.related-post-meta i {
+    font-size: 14px;
+    margin-right: 6px;
+    color: #e53935;
+    vertical-align: middle;
 }
 
 /* Responsive: stack for small screens */
