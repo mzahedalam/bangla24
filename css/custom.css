@@ -340,6 +340,12 @@ img {
         padding-left: 20px;
     }
 }
+/* scrolling menu */
+@media (min-width: 766px) {
+    .main-navigation-scroll {
+        display: none; /* Hide the horizontal scrolling menu on larger screens */
+    }
+}
 
 /* Breaking News Ticker */
 .breaking-news {

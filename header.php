@@ -161,7 +161,7 @@
 </div>
 
 <!-- testing menu  -->
-<div class="main-navigation">
+<div class="main-navigation-scroll">
     <div class="container">
         <nav id="site-navigation" class="main-nav">
             <div class="scroll-menu-wrapper">
