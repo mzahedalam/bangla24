@@ -45,7 +45,7 @@
 					<span class="sep"> | </span>
 					<?php
 					/* translators: %s: Theme name and link */
-					printf( esc_html__( 'Theme: %s', 'modern-news-portal' ), '<a href="https://example.com/modern-news-portal/">BANGLA24</a>' );
+					printf( esc_html__( 'Theme: %s', 'modern-news-portal' ), '<a href="https://bangla24.com/themes/bangla24/">BANGLA24</a>' );
 					?>
 				</div>
 
