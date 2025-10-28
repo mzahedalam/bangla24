@@ -167,17 +167,17 @@ function modern_news_portal_scripts() {
 	
 	// Main stylesheet (includes processed Tailwind CSS and custom styles)
 	wp_enqueue_style( 'modern-news-portal-style', get_stylesheet_uri(), array(), MODERN_NEWS_PORTAL_VERSION );
-	
-	// Custom CSS
-	wp_enqueue_style( 'modern-news-portal-custom', get_template_directory_uri() . '/css/custom.css', array(), MODERN_NEWS_PORTAL_VERSION );
-
-	//Responsive CSS
+    
+	// Responsive CSS - enqueue before custom so custom.css can override responsive rules
 	wp_enqueue_style(
-        'modern-news-portal-responsive',
-        get_template_directory_uri() . '/css/responsive.css',
-        array('modern-news-portal-style'),
-        MODERN_NEWS_PORTAL_VERSION
-    );
+		'modern-news-portal-responsive',
+		get_template_directory_uri() . '/css/responsive.css',
+		array('modern-news-portal-style'),
+		MODERN_NEWS_PORTAL_VERSION
+	);
+
+	// Custom CSS (loads after responsive)
+	wp_enqueue_style( 'modern-news-portal-custom', get_template_directory_uri() . '/css/custom.css', array('modern-news-portal-style','modern-news-portal-responsive'), MODERN_NEWS_PORTAL_VERSION );
 	
 	// Navigation script
 	wp_enqueue_script( 'modern-news-portal-navigation', get_template_directory_uri() . '/js/navigation.js', array(), MODERN_NEWS_PORTAL_VERSION, true );
